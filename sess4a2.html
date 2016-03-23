@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> sess4 </title>
+<script type="text/javascript">
+
+function person(name,type)
+{
+   this.name = name;
+   this.type = type;
+}
+
+person.prototype.display = function()
+{
+	return [this.name.toUpperCase(),this.type.toUpperCase()].join(' ');
+};
+
+
+function student(name,type,roll)
+{
+	person.call(this,name,type);
+	this.roll = roll;
+}
+
+student.prototype = new person();
+
+student.prototype.getroll = function()
+{
+	return 'Roll number is ' + this.roll ;
+}
+
+var stu = new student('Joel','student',130591);
+
+console.log(stu.display());
+console.log(stu.getroll());
+
+
+</script>
+</head>
+<body>
+<p> CHECK CONSOLE /p>
+</body>
+</html>
